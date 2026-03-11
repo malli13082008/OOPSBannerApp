@@ -1,49 +1,65 @@
-public class OOPSBannerApp{
+public class OOPSBannerApp {
 
-    // Static method for O pattern
-    public static String[] getOPattern() {
-        return new String[]{
-            " *** ",
-            "*   *",
-            "*   *",
-            "*   *",
-            " *** "
-        };
-    }
+    // Static inner class
+    static class CharacterPatternMap {
 
-    // Static method for P pattern
-    public static String[] getPPattern() {
-        return new String[]{
-            "**** ",
-            "*   *",
-            "**** ",
-            "*    ",
-            "*    "
-        };
-    }
+        private char character;
+        private String[] pattern;
 
-    // Static method for S pattern
-    public static String[] getSPattern() {
-        return new String[]{
-            " ****",
-            "*    ",
-            " *** ",
-            "    *",
-            "**** "
-        };
+        // Constructor
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        // Getter
+        public String[] getPattern() {
+            return pattern;
+        }
     }
 
     public static void main(String[] args) {
 
-        // Call static methods
-        String[] O = getOPattern();
-        String[] P = getPPattern();
-        String[] S = getSPattern();
+        // Create objects for each character
+        CharacterPatternMap O = new CharacterPatternMap('O', new String[]{
+                " *** ",
+                "*   *",
+                "*   *",
+                "*   *",
+                " *** "
+        });
 
-        // Loop to print banner
-        for (int i = 0; i < O.length; i++) {
-            System.out.println(O[i] + "  " + O[i] + "  " + P[i] + "  " + S[i]);
+        CharacterPatternMap P = new CharacterPatternMap('P', new String[]{
+                "**** ",
+                "*   *",
+                "**** ",
+                "*    ",
+                "*    "
+        });
+
+        CharacterPatternMap S = new CharacterPatternMap('S', new String[]{
+                " ****",
+                "*    ",
+                " *** ",
+                "    *",
+                "**** "
+        });
+
+        String[] oPattern = O.getPattern();
+        String[] pPattern = P.getPattern();
+        String[] sPattern = S.getPattern();
+
+        // Display banner
+        for (int i = 0; i < oPattern.length; i++) {
+
+            StringBuilder line = new StringBuilder();
+
+            line.append(oPattern[i]).append("  ");
+            line.append(oPattern[i]).append("  ");
+            line.append(pPattern[i]).append("  ");
+            line.append(sPattern[i]);
+
+            System.out.println(line);
         }
     }
 }
-
